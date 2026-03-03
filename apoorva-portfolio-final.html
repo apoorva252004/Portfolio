@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Apoorva Hegde</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--ink:#0f0e0a;--paper:#f5f0e8;--cream:#ede8db;--orange:#e85d26;--muted:#7a7060;--border:2px solid var(--ink);--border-thin:1px solid var(--ink)}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Space Mono',monospace;overflow-x:hidden;cursor:crosshair}
+.ticker{background:var(--orange);color:var(--paper);border-bottom:var(--border);padding:.55rem 0;overflow:hidden;white-space:nowrap;position:sticky;top:0;z-index:200}
+.ticker-inner{display:inline-block;animation:ticker 26s linear infinite;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+nav{display:flex;align-items:stretch;border-bottom:var(--border);background:var(--paper);position:sticky;top:37px;z-index:100}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:.08em;padding:.9rem 2rem;border-right:var(--border);flex-shrink:0}
+.nav-links{display:flex;align-items:stretch;margin-left:auto}
+.nav-links a{display:flex;align-items:center;text-decoration:none;color:var(--ink);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;padding:0 1.6rem;border-left:var(--border-thin);transition:background .15s,color .15s}
+.nav-links a:hover{background:var(--ink);color:var(--paper)}
+#hero{display:grid;grid-template-columns:1fr 380px;min-height:calc(100vh - 110px);border-bottom:var(--border)}
+.hero-left{padding:4rem 3rem;border-right:var(--border);display:flex;flex-direction:column;justify-content:space-between}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:2rem}
+.hero-eyebrow::before{content:'◆';color:var(--orange);font-size:.5rem}
+h1.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,13vw,12rem);line-height:.88;letter-spacing:-.01em;text-transform:uppercase}
+h1.hero-name .line-orange{color:var(--orange);display:block}
+.hero-descriptor{display:flex;margin-top:3rem;border:var(--border)}
+.descriptor-item{flex:1;padding:1rem 1.2rem;border-right:var(--border-thin);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.descriptor-item:last-child{border-right:none}
+.descriptor-item strong{display:block;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--ink);letter-spacing:.05em;margin-bottom:.2rem}
+.hero-bio{margin-top:2.5rem;font-family:'Instrument Serif',serif;font-style:italic;font-size:1.25rem;line-height:1.65;max-width:540px}
+.hero-ctas{margin-top:2.5rem;display:flex}
+.btn-brute{display:inline-block;text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2rem;border:var(--border);transition:background .15s,color .15s;font-family:'Space Mono',monospace}
+.btn-primary{background:var(--ink);color:var(--paper);margin-right:-2px}
+.btn-primary:hover{background:var(--orange);border-color:var(--orange)}
+.btn-outline{background:transparent;color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--paper)}
+.hero-right{display:flex;flex-direction:column}
+.hero-panel{flex:1;border-bottom:var(--border);padding:1.5rem;display:flex;flex-direction:column;justify-content:center}
+.hero-panel:last-child{border-bottom:none}
+.panel-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.panel-val{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:.04em;line-height:1}
+.panel-sub{font-size:.7rem;color:var(--muted);margin-top:.35rem}
+.iisc-badge{background:var(--orange);color:var(--paper);padding:.3rem .7rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;display:inline-block;margin-top:.5rem}
+.section-header{border-bottom:var(--border);padding:1rem 3rem;display:flex;align-items:baseline;gap:1.5rem}
+.section-num{font-size:.65rem;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
+.section-header h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,5vw,4rem);letter-spacing:.04em;line-height:1}
+.section-header h2 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--orange)}
+#about{border-bottom:var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr}
+.about-text{padding:3rem;border-right:var(--border)}
+.about-text p{font-family:'Instrument Serif',serif;font-size:1.1rem;line-height:1.75;margin-bottom:1.4rem}
+.about-text p strong{font-style:italic}
+.tag-block{margin-top:2rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.brute-tag{border:var(--border-thin);padding:.3rem .75rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;transition:background .15s,color .15s;cursor:crosshair}
+.brute-tag:hover{background:var(--ink);color:var(--paper)}
+.about-timeline{padding:3rem 2.5rem}
+.tl-item{display:grid;grid-template-columns:90px 1fr;gap:1.2rem;padding:1.2rem 0;border-bottom:var(--border-thin);align-items:start}
+.tl-item:last-child{border-bottom:none}
+.tl-year{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-top:.15rem;line-height:1.4}
+.tl-title{font-family:'Bebas Neue',sans-serif;font-size:1.15rem;letter-spacing:.05em;line-height:1.1}
+.tl-sub{font-size:.72rem;color:var(--muted);margin-top:.2rem}
+.tl-current{display:inline-block;background:var(--orange);color:var(--paper);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;padding:.15rem .5rem;margin-top:.35rem}
+#projects{border-bottom:var(--border)}
+.project-row{display:grid;grid-template-columns:60px 1fr auto;align-items:start;gap:2rem;padding:2rem 3rem;border-bottom:var(--border-thin);transition:background .15s;cursor:crosshair}
+.project-row:last-child{border-bottom:none}
+.project-row:hover{background:var(--cream)}
+.project-row:hover .proj-arrow{opacity:1;transform:translateX(0)}
+.proj-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--orange);line-height:1;padding-top:.3rem}
+.proj-title{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:.03em;line-height:1;margin-bottom:.6rem}
+.proj-desc{font-family:'Instrument Serif',serif;font-size:.98rem;line-height:1.65;color:#444;max-width:600px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
+.proj-tag{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:var(--border-thin);padding:.2rem .55rem;color:var(--muted)}
+.proj-arrow{font-size:1.8rem;color:var(--orange);opacity:0;transform:translateX(-8px);transition:all .2s;align-self:center}
+.proj-patent{display:inline-block;background:var(--ink);color:var(--paper);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;padding:.25rem .6rem;margin-top:.5rem}
+#skills{border-bottom:var(--border)}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr)}
+.skill-col{border-right:var(--border);padding:2.5rem 2rem}
+.skill-col:last-child{border-right:none}
+.skill-col-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.06em;border-bottom:var(--border-thin);padding-bottom:.75rem;margin-bottom:1.25rem}
+.skill-item{display:flex;align-items:center;gap:.6rem;padding:.55rem 0;border-bottom:1px solid rgba(15,14,10,.1);font-size:.78rem;letter-spacing:.06em;transition:padding-left .2s,color .2s}
+.skill-item:hover{padding-left:.5rem;color:var(--orange)}
+.skill-item::before{content:'—';color:var(--orange);font-size:.7rem;flex-shrink:0}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr}
+.contact-left{padding:4rem 3rem;border-right:var(--border)}
+.contact-left h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:.02em;margin-bottom:1.5rem}
+.contact-left h2 em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--orange);display:block}
+.contact-left p{font-family:'Instrument Serif',serif;font-size:1.05rem;line-height:1.7;color:#444;margin-bottom:2rem}
+.contact-right{display:flex;flex-direction:column}
+.contact-link-row{display:flex;align-items:center;padding:1.5rem 2rem;border-bottom:var(--border-thin);text-decoration:none;color:var(--ink);gap:1.2rem;transition:background .15s,color .15s;font-size:.8rem;letter-spacing:.06em}
+.contact-link-row:last-child{border-bottom:none}
+.contact-link-row:hover{background:var(--ink);color:var(--paper)}
+.contact-link-row:hover .cl-label{color:#aaa}
+.cl-icon{font-size:1.1rem;flex-shrink:0;width:24px;text-align:center}
+.cl-label{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.cl-val{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.05em;margin-top:.1rem}
+footer{border-top:var(--border);background:var(--ink);color:var(--paper);display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3rem;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+footer span:last-child{color:var(--orange)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  #hero{grid-template-columns:1fr}.hero-right{display:none}
+  .about-grid,.contact-inner{grid-template-columns:1fr}
+  .about-text{border-right:none;border-bottom:var(--border)}
+  .contact-left{border-right:none;border-bottom:var(--border)}
+  .skills-grid{grid-template-columns:1fr}
+  .skill-col{border-right:none;border-bottom:var(--border)}
+  .project-row{grid-template-columns:40px 1fr;padding:1.5rem}.proj-arrow{display:none}
+  nav{top:33px}.section-header{padding:1rem 1.5rem}.hero-left{padding:2.5rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker">
+  <span class="ticker-inner">Apoorva Hegde &nbsp;&#9670;&nbsp; Data Science &nbsp;&#9670;&nbsp; Research Intern @ IISc &nbsp;&#9670;&nbsp; Economics Minor &nbsp;&#9670;&nbsp; XAI &nbsp;&#9670;&nbsp; NLP &nbsp;&#9670;&nbsp; Policy Research &nbsp;&#9670;&nbsp; Photography &nbsp;&#9670;&nbsp; Bengaluru, India &nbsp;&#9670;&nbsp; Apoorva Hegde &nbsp;&#9670;&nbsp; Data Science &nbsp;&#9670;&nbsp; Research Intern @ IISc &nbsp;&#9670;&nbsp; Economics Minor &nbsp;&#9670;&nbsp; XAI &nbsp;&#9670;&nbsp; NLP &nbsp;&#9670;&nbsp; Policy Research &nbsp;&#9670;&nbsp; Photography &nbsp;&#9670;&nbsp; Bengaluru, India &nbsp;&#9670;&nbsp;</span>
+</div>
+
+<nav>
+  <div class="nav-logo">AH</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-eyebrow">Data Scientist &amp; Policy Researcher &middot; Bengaluru, India</div>
+      <h1 class="hero-name">Apoorva<span class="line-orange">Hegde.</span></h1>
+      <p class="hero-bio">Turning raw data into evidence-based insight &mdash; at the intersection of machine learning, econometrics, and public policy.</p>
+    </div>
+    <div>
+      <div class="hero-descriptor">
+        <div class="descriptor-item"><strong>5+</strong>Projects</div>
+        <div class="descriptor-item"><strong>01</strong>Patent</div>
+        <div class="descriptor-item"><strong>IISc</strong>Current Role</div>
+        <div class="descriptor-item"><strong>2026</strong>Graduating</div>
+      </div>
+      <div class="hero-ctas" style="margin-top:-2px">
+        <a href="#projects" class="btn-brute btn-primary">View Work</a>
+        <a href="#contact" class="btn-brute btn-outline">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-panel">
+      <div class="panel-label">Current Position</div>
+      <div class="panel-val">Research<br>Intern</div>
+      <div class="panel-sub">IISc Sustainability Research Lab</div>
+      <div class="iisc-badge">&#9679; Active &middot; Jan 2026</div>
+    </div>
+    <div class="hero-panel">
+      <div class="panel-label">Degree</div>
+      <div class="panel-val">B.Sc. Hons.</div>
+      <div class="panel-sub">Data Science &middot; Minor in Economics<br>RV University, 2022&ndash;2026</div>
+    </div>
+    <div class="hero-panel">
+      <div class="panel-label">Focus Areas</div>
+      <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.5rem">
+        <span style="font-size:.72rem;letter-spacing:.08em">&#8627; Explainable AI &amp; ML</span>
+        <span style="font-size:.72rem;letter-spacing:.08em">&#8627; Econometrics &amp; Policy</span>
+        <span style="font-size:.72rem;letter-spacing:.08em">&#8627; Financial Analytics</span>
+        <span style="font-size:.72rem;letter-spacing:.08em">&#8627; Sustainability Research</span>
+        <span style="font-size:.72rem;letter-spacing:.08em">&#8627; NLP &amp; Data Generation</span>
+      </div>
+    </div>
+    <div class="hero-panel" style="border-bottom:none">
+      <div class="panel-label">Beyond Data</div>
+      <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem">
+        <span class="brute-tag">Classical Dance</span>
+        <span class="brute-tag">Indian Music</span>
+        <span class="brute-tag">Photography</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-header"><span class="section-num">01 /</span><h2>About <em>Me</em></h2></div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a <strong>Data Science undergraduate at RV University</strong>, Bengaluru, pursuing a minor in Economics. Currently interning at the <strong>IISc Sustainability Research Lab</strong> (since Jan 2026), where I apply data-driven approaches to sustainability challenges.</p>
+      <p>My work sits at the crossroads of machine learning, econometrics, and public policy. I care deeply about building models that are not just accurate &mdash; but <strong>interpretable, fair, and meaningful</strong>.</p>
+      <p>From explainable AI for education policy to a patent-winning geographic-indication game, I'm drawn to projects where data meets real-world purpose. Outside of data, I find grounding in <strong>classical dance, Indian music, and photography</strong>.</p>
+      <div class="tag-block">
+        <span class="brute-tag">Policy Research</span>
+        <span class="brute-tag">AI for Social Good</span>
+        <span class="brute-tag">Financial Analytics</span>
+        <span class="brute-tag">Education Data</span>
+        <span class="brute-tag">Sustainability</span>
+        <span class="brute-tag">Classical Dance</span>
+        <span class="brute-tag">Indian Music</span>
+        <span class="brute-tag">Photography</span>
+      </div>
+    </div>
+    <div class="about-timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">Jan 2026<br>Now</div>
+        <div><div class="tl-title">Research Intern</div><div class="tl-sub">IISc Sustainability Research Lab</div><div class="tl-current">&#9679; Active</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Jan&ndash;Apr 2025</div>
+        <div><div class="tl-title">Business Analyst Intern</div><div class="tl-sub">dots &middot; Automotive Industry Research</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Oct 2024&ndash;Mar 2025</div>
+        <div><div class="tl-title">Teacher &amp; Mentor</div><div class="tl-sub">U&amp;I Trust</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">Oct 2023&ndash;Jul 2024</div>
+        <div><div class="tl-title">Core Member</div><div class="tl-sub">Centre for Criminal Justice Studies, RVU</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2022&ndash;2026</div>
+        <div><div class="tl-title">B.Sc. (Hons.) Data Science</div><div class="tl-sub">RV University &middot; Minor: Economics</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2023</div>
+        <div><div class="tl-title">Patent Co-Creator</div><div class="tl-sub">GI Experience &ldquo;Ast&eacute;ri&rdquo; &middot; 202341068946</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-header"><span class="section-num">02 /</span><h2>Selected <em>Work</em></h2></div>
+  <div class="project-row reveal">
+    <div class="proj-num">01</div>
+    <div>
+      <div class="proj-title">Financial Index Development</div>
+      <div class="proj-desc">Collaborating under faculty mentorship to design a data-driven financial index integrating key economic indicators for assessing market stability. Leading technical development with NLP techniques for data generation and analysis.</div>
+      <div class="proj-tags"><span class="proj-tag">NLP</span><span class="proj-tag">Financial Economics</span><span class="proj-tag">Index Design</span><span class="proj-tag">Python</span><span class="proj-tag">Ongoing 2025</span></div>
+    </div>
+    <div class="proj-arrow">&#8594;</div>
+  </div>
+  <div class="project-row reveal">
+    <div class="proj-num">02</div>
+    <div>
+      <div class="proj-title">Explainable Policy Decision Model</div>
+      <div class="proj-desc">Built a Random Forest model with SHAP and LIME to study how education spending affects learning outcomes. Promotes transparency and interpretability in AI-driven policy design.</div>
+      <div class="proj-tags"><span class="proj-tag">XAI</span><span class="proj-tag">SHAP</span><span class="proj-tag">LIME</span><span class="proj-tag">Random Forest</span><span class="proj-tag">2025</span></div>
+    </div>
+    <div class="proj-arrow">&#8594;</div>
+  </div>
+  <div class="project-row reveal">
+    <div class="proj-num">03</div>
+    <div>
+      <div class="proj-title">BRICS &mdash; China &amp; Russia Comparative Analysis</div>
+      <div class="proj-desc">Comparative study using macroeconomic indicators and governance metrics to assess policy efficiency, trade patterns, and socio-economic growth within the BRICS framework.</div>
+      <div class="proj-tags"><span class="proj-tag">Econometrics</span><span class="proj-tag">Data Visualization</span><span class="proj-tag">Policy Analysis</span><span class="proj-tag">2024</span></div>
+    </div>
+    <div class="proj-arrow">&#8594;</div>
+  </div>
+  <div class="project-row reveal">
+    <div class="proj-num">04</div>
+    <div>
+      <div class="proj-title">Crop Yield Estimation via CNN</div>
+      <div class="proj-desc">Developed a Convolutional Neural Network model achieving R&sup2;=0.92, demonstrating the potential of deep learning for agricultural sustainability and food security planning.</div>
+      <div class="proj-tags"><span class="proj-tag">CNN</span><span class="proj-tag">Deep Learning</span><span class="proj-tag">Agriculture AI</span><span class="proj-tag">Python</span><span class="proj-tag">2024</span></div>
+    </div>
+    <div class="proj-arrow">&#8594;</div>
+  </div>
+  <div class="project-row reveal">
+    <div class="proj-num">05</div>
+    <div>
+      <div class="proj-title">Ast&eacute;ri &mdash; GI Experience Game</div>
+      <div class="proj-desc">Co-created a storytelling-based game promoting awareness of Geographical Indication tagged products and local cultural heritage. Resulted in a granted patent.</div>
+      <div class="proj-tags"><span class="proj-tag">Game Design</span><span class="proj-tag">Storytelling</span><span class="proj-tag">Cultural Heritage</span><span class="proj-tag">2023</span></div>
+      <div class="proj-patent">Patent No. 202341068946</div>
+    </div>
+    <div class="proj-arrow">&#8594;</div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-header"><span class="section-num">03 /</span><h2>Skills &amp; <em>Tools</em></h2></div>
+  <div class="skills-grid">
+    <div class="skill-col reveal">
+      <div class="skill-col-title">Technical</div>
+      <div class="skill-item">Python</div><div class="skill-item">SQL</div>
+      <div class="skill-item">Pandas &amp; NumPy</div><div class="skill-item">Scikit-learn</div>
+      <div class="skill-item">Power BI</div><div class="skill-item">Excel</div>
+      <div class="skill-item">Hadoop / Big Data</div><div class="skill-item">ML &amp; AI Tools</div>
+    </div>
+    <div class="skill-col reveal">
+      <div class="skill-col-title">Analytical</div>
+      <div class="skill-item">Statistical Modeling</div><div class="skill-item">Econometrics</div>
+      <div class="skill-item">Data Visualization</div><div class="skill-item">Research Writing</div>
+      <div class="skill-item">Financial Economics</div><div class="skill-item">NLP</div>
+      <div class="skill-item">Explainable AI (XAI)</div>
+    </div>
+    <div class="skill-col reveal">
+      <div class="skill-col-title">Communication</div>
+      <div class="skill-item">Leadership</div><div class="skill-item">Public Speaking</div>
+      <div class="skill-item">Storytelling</div><div class="skill-item">Collaboration</div>
+      <div class="skill-item">Policy Writing</div><div class="skill-item">Research Design</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-inner">
+    <div class="contact-left reveal">
+      <h2>Let's<br><em>Connect.</em></h2>
+      <p>I'm open to research collaborations, internships, and conversations about data, policy, and everything in between. Drop a message &mdash; I'd love to hear from you.</p>
+      <a href="mailto:apoorva252004@gmail.com" class="btn-brute btn-primary">Send an Email &#8594;</a>
+    </div>
+    <div class="contact-right reveal">
+      <a href="mailto:apoorva252004@gmail.com" class="contact-link-row" target="_blank">
+        <span class="cl-icon">&#9993;</span>
+        <div><div class="cl-label">Email</div><div class="cl-val">apoorva252004@gmail.com</div></div>
+      </a>
+      <a href="https://linkedin.com/in/apoorva-hegde-42879b25a" class="contact-link-row" target="_blank">
+        <span class="cl-icon">in</span>
+        <div><div class="cl-label">LinkedIn</div><div class="cl-val">apoorva-hegde-42879b25a</div></div>
+      </a>
+      <a href="https://substack.com/@apoorvah" class="contact-link-row" target="_blank">
+        <span class="cl-icon">&#9998;</span>
+        <div><div class="cl-label">Substack</div><div class="cl-val">@apoorvah</div></div>
+      </a>
+      <a href="https://www.instagram.com/a_p_o_o_r_v_a_hegde25/" class="contact-link-row" target="_blank">
+        <span class="cl-icon">&#9678;</span>
+        <div><div class="cl-label">Instagram &middot; Photography</div><div class="cl-val">@a_p_o_o_r_v_a_hegde25</div></div>
+      </a>
+      <div class="contact-link-row">
+        <span class="cl-icon">&#9737;</span>
+        <div><div class="cl-label">Location</div><div class="cl-val">Bengaluru, Karnataka, India</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>&#169; 2026 Apoorva Hegde</span>
+  <span>Data Science &middot; Economics &middot; Policy</span>
+  <span>Bengaluru &#9670;</span>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*100);obs.unobserve(e.target)}
+  });
+},{threshold:.1});
+reveals.forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
